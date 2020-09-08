@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type Props = {
   value: number;
@@ -12,16 +12,13 @@ export function LevelRange(props: Props) {
   }
 
   return (
-    <div>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
-      <input
-        type="range"
-        min="0"
-        max={props.max}
-        onChange={handleChange}
-        value={props.value}
-        className="w-full"
-      ></input>
-    </div>
+    <input
+      type="range"
+      min="1"
+      max={props.max}
+      onChange={handleChange}
+      value={props.value}
+      className="w-full"
+    ></input>
   );
 }

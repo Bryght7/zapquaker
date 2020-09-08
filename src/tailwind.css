@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    input[type=range] {
+        @apply w-full bg-transparent appearance-none my-1;
+    }
+}
