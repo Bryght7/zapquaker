@@ -8,26 +8,21 @@ type Props = {
   quantity?: number;
 };
 
-export class SpellDisplay extends React.Component<Props> {
-  render() {
-    let spellQuantityComponent;
-    if (this.props.quantity) {
-      spellQuantityComponent = <SpellQuantity value={ this.props.quantity} />;
-    }
-    
-    return (
-      <div className="relative inline-block border border-indigo-700 rounded-lg bg-purple-700">
-        { spellQuantityComponent }
-        <SpellLevel
-          level={this.props.maxLevel}
-          maxLevel={this.props.maxLevel}
-        />
-        <img
-          className="w-24"
-          src={`/img/${this.props.name}.png`}
-          alt={`Icon ${this.props.name}`}
-        />
-      </div>
-    );
+export function SpellDisplay(props: Props) {
+  let spellQuantityComponent;
+  if (props.quantity) {
+    spellQuantityComponent = <SpellQuantity value={props.quantity} />;
   }
+
+  return (
+    <div className="relative inline-block border border-indigo-700 rounded-lg bg-purple-700">
+      {spellQuantityComponent}
+      <SpellLevel level={props.maxLevel} maxLevel={props.maxLevel} />
+      <img
+        className="w-24"
+        src={`/img/${props.name}.png`}
+        alt={`Icon ${props.name}`}
+      />
+    </div>
+  );
 }
