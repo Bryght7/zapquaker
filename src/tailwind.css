@@ -2,9 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
-    input[type=range] {
-        @apply w-full bg-transparent appearance-none my-1;
+  input[type='range'] {
+    @apply w-full bg-transparent appearance-none my-1;
+  }
+  input[type='range']:focus {
+    @apply outline-none;
+  }
+  input[type='range']::-webkit-slider-runnable-track {
+    @apply bg-gray-400 border-none rounded-none w-full h-3 cursor-pointer;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    margin-top: -7px;
+    @apply w-6 h-6 bg-blue-800 border-none rounded-md cursor-pointer appearance-none;
+  }
+  input[type='range']:focus::-webkit-slider-runnable-track {
+    @apply bg-gray-400;
+  }
+  input[type='range']::-moz-range-track {
+    @apply bg-gray-400 border-none rounded-none w-full h-3 cursor-pointer;
+  }
+  input[type='range']::-moz-range-thumb {
+    @apply w-6 h-6 bg-blue-800 border-none rounded-md cursor-pointer;
+  }
+  input[type='range']::-ms-track {
+    @apply bg-transparent border-transparent border-t-8 placeholder-transparent w-full h-3 cursor-pointer;
+  }
+  input[type='range']::-ms-fill-lower {
+    @apply bg-gray-400 border-none;
+  }
+  input[type='range']::-ms-fill-upper {
+    @apply bg-gray-400 border-none;
+  }
+  input[type='range']::-ms-thumb {
+    @apply w-6 h-6 bg-blue-800 border-none rounded-md cursor-pointer mt-0;
+    /*Needed to keep the Edge thumb centred*/
+  }
+  input[type='range']:focus::-ms-fill-lower {
+    @apply bg-gray-400;
+  }
+  input[type='range']:focus::-ms-fill-upper {
+    @apply bg-gray-400;
+  }
+  @supports (-ms-ime-align: auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    input[type='range'] {
+      @apply m-0;
+      /*Edge starts the margin from the thumb, not the track as other browsers do*/
     }
+  }
 }
