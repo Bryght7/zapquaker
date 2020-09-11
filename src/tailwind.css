@@ -26,7 +26,7 @@
     @apply w-6 h-6 bg-blue-800 border-none rounded-md cursor-pointer;
   }
   input[type='range']::-ms-track {
-    @apply bg-transparent border-transparent border-t-8 placeholder-transparent w-full h-3 cursor-pointer;
+    @apply bg-transparent border-transparent border-t-8 w-full h-3 cursor-pointer;
   }
   input[type='range']::-ms-fill-lower {
     @apply bg-gray-400 border-none;
