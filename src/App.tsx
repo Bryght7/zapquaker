@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { SpellDisplay } from "./components/SpellDisplay";
-import { LevelRange } from "./components/LevelRange";
+import { InputSection } from "./components/InputSection";
 
 export default function App() {
-  const [levelValue, setLevelValue] = useState(3);
+  const [zapLevel, setZapLevel] = useState(3);
+  const [quakeLevel, setQuakeLevel] = useState(3);
 
   return (
-    <div className="bg-red-200">
-      <SpellDisplay name="spell_lightning" maxLevel={9} quantity={2} />
-      <LevelRange value={levelValue} max={9} onChange={value => setLevelValue(value)} />
-    </div>
+    <InputSection
+      zapLevel={zapLevel}
+      setZapLevel={setZapLevel}
+      quakeLevel={quakeLevel}
+      setQuakeLevel={setQuakeLevel}
+    />
   );
 }

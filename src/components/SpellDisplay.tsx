@@ -4,6 +4,7 @@ import { SpellQuantity } from "./SpellQuantity";
 
 type Props = {
   name: string;
+  level: number;
   maxLevel: number;
   quantity?: number;
 };
@@ -17,9 +18,9 @@ export function SpellDisplay(props: Props) {
   return (
     <div className="relative inline-block border border-indigo-700 rounded-lg bg-purple-700">
       {spellQuantityComponent}
-      <SpellLevel level={props.maxLevel} maxLevel={props.maxLevel} />
+      <SpellLevel level={props.level} maxLevel={props.maxLevel} />
       <img
-        className="w-24"
+        className="w-24 rounded-lg"
         src={`/img/${props.name}.png`}
         alt={`Icon ${props.name}`}
       />

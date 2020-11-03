@@ -18,7 +18,10 @@ afterEach(() => {
 
 it("has correct src attribute", () => {
   act(() => {
-    ReactDOM.render(<SpellDisplay name="test" maxLevel={9} />, container);
+    ReactDOM.render(
+      <SpellDisplay name="test" level={9} maxLevel={9} />,
+      container
+    );
   });
   const img = container.querySelector("img");
   expect(img?.src).toMatch(/.*\/img\/test\.png/);
@@ -26,7 +29,10 @@ it("has correct src attribute", () => {
 
 it("has correct alt attribute", () => {
   act(() => {
-    ReactDOM.render(<SpellDisplay name="test" maxLevel={9} />, container);
+    ReactDOM.render(
+      <SpellDisplay name="test" level={9} maxLevel={9} />,
+      container
+    );
   });
   const img = container.querySelector("img");
   expect(img?.alt).toEqual("Icon test");
@@ -34,15 +40,21 @@ it("has correct alt attribute", () => {
 
 it("displays default level", () => {
     act(() => {
-      ReactDOM.render(<SpellDisplay name="test" maxLevel={9} />, container);
+      ReactDOM.render(
+        <SpellDisplay name="test" level={8} maxLevel={9} />,
+        container
+      );
     });
     const levelContainer = container.querySelector(".level-container");
-    expect(levelContainer?.textContent).toBe("9");
+    expect(levelContainer?.textContent).toBe("8");
 });
 
 it("displays quantity if specified", () => {
   act(() => {
-    ReactDOM.render(<SpellDisplay name="test" maxLevel={9} quantity={2}/>, container);
+    ReactDOM.render(
+      <SpellDisplay name="test" level={9} maxLevel={9} quantity={2} />,
+      container
+    );
   });
   const spellQuantity = container.querySelector(".spell-quantity");
   expect(spellQuantity?.textContent).toBe("x2");
@@ -50,7 +62,10 @@ it("displays quantity if specified", () => {
 
 it("does not display quantity if undefined", () => {
   act(() => {
-    ReactDOM.render(<SpellDisplay name="test" maxLevel={9}/>, container);
+    ReactDOM.render(
+      <SpellDisplay name="test" level={9} maxLevel={9} />,
+      container
+    );
   });
   const spellQuantity = container.querySelector(".spell-quantity");
   expect(spellQuantity).toBeNull();
