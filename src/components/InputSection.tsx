@@ -1,4 +1,5 @@
 import React from "react";
+import { DATA_SPELLS } from "../gameData";
 import { LevelRange } from "./LevelRange";
 import { SpellDisplay } from "./SpellDisplay";
 
@@ -14,9 +15,9 @@ export function InputSection(props: Props) {
     <div className="bg-red-100 flex justify-evenly">
       <div className="text-center bg-red-300">
         <SpellDisplay
-          name="spell_lightning"
+          name="lightning"
           level={props.zapLevel}
-          maxLevel={9}
+          maxLevel={DATA_SPELLS[1].damage.length}
         />
         <LevelRange
           value={props.zapLevel}
@@ -26,9 +27,9 @@ export function InputSection(props: Props) {
       </div>
       <div className="text-center bg-red-300">
         <SpellDisplay
-          name="spell_quake"
+          name="quake"
           level={props.quakeLevel}
-          maxLevel={5}
+          maxLevel={DATA_SPELLS[0].damage.length}
         />
         <LevelRange
           value={props.quakeLevel}

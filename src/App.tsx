@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { InputSection } from "./components/InputSection";
+import { ResultsSection } from "./components/ResultsSection";
 
 export default function App() {
-  const [zapLevel, setZapLevel] = useState(3);
-  const [quakeLevel, setQuakeLevel] = useState(3);
+  const [zapLevel, setZapLevel] = useState(9);
+  const [quakeLevel, setQuakeLevel] = useState(5);
 
   return (
-    <InputSection
-      zapLevel={zapLevel}
-      setZapLevel={setZapLevel}
-      quakeLevel={quakeLevel}
-      setQuakeLevel={setQuakeLevel}
-    />
+    <div>
+      <InputSection
+        zapLevel={zapLevel}
+        setZapLevel={setZapLevel}
+        quakeLevel={quakeLevel}
+        setQuakeLevel={setQuakeLevel}
+      />
+      <ResultsSection
+        zapLevel={zapLevel}
+        quakeLevel={quakeLevel}
+      />
+    </div>
   );
 }

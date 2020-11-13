@@ -7,21 +7,28 @@ type Props = {
   level: number;
   maxLevel: number;
   quantity?: number;
+  size?: "sm";
 };
 
 export function SpellDisplay(props: Props) {
   let spellQuantityComponent;
   if (props.quantity) {
-    spellQuantityComponent = <SpellQuantity value={props.quantity} />;
+    spellQuantityComponent = (
+      <SpellQuantity value={props.quantity} size={props.size} />
+    );
   }
 
   return (
     <div className="relative inline-block border border-indigo-700 rounded-lg bg-purple-700">
       {spellQuantityComponent}
-      <SpellLevel level={props.level} maxLevel={props.maxLevel} />
+      <SpellLevel
+        level={props.level}
+        maxLevel={props.maxLevel}
+        size={props.size}
+      />
       <img
-        className="w-24 rounded-lg"
-        src={`/img/${props.name}.png`}
+        className={`rounded-lg ${props.size === "sm" ? "w-12" : "w-24"}`}
+        src={`/img/spell_${props.name}.png`}
         alt={`Icon ${props.name}`}
       />
     </div>

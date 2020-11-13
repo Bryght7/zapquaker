@@ -24,7 +24,7 @@ it("has correct src attribute", () => {
     );
   });
   const img = container.querySelector("img");
-  expect(img?.src).toMatch(/.*\/img\/test\.png/);
+  expect(img?.src).toMatch(/.*\/img\/spell_test\.png/);
 });
 
 it("has correct alt attribute", () => {
