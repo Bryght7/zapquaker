@@ -9,6 +9,11 @@ export type Spell = {
   damage: number[];
 };
 
+export type ZapQuake = {
+  nbZap: number;
+  nbQuake: number;
+};
+
 // prettier-ignore
 export const DATA_BUILDINGS: Building[] = [
   { id: "19", name: "Clan castle", hp: [1000,1400,2000,2600,3000,3400,4000,4400,4800] },
