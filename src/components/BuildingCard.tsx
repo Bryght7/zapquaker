@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Building, DATA_SPELLS } from "../gameData";
 import { BuildingHeader } from "./BuildingHeader";
 import { LevelRange } from "./LevelRange";
@@ -11,60 +11,52 @@ type Props = {
 };
 
 type ZapQuake = {
-  zap: number;
-  quake: number;
+  nbZap: number;
+  nbQuake: number;
 };
 
 export function BuildingCard(props: Props) {
+  const [buildingLevel, setBuildingLevel] = useState(props.building.hp.length);
+
   const zapQuakes: ZapQuake[] = [
-    { zap: 7, quake: 1 },
-    { zap: 6, quake: 2 },
-    { zap: 8, quake: 0 },
+    { nbZap: 7, nbQuake: 1 },
+    { nbZap: 6, nbQuake: 2 },
+    { nbZap: 8, nbQuake: 0 },
   ];
 
-  const zapQuakesRender = zapQuakes.map((z, i) => {
-    let zapRender, quakeRender;
-    if (z.zap !== 0) {
-      zapRender = (
+  const zapQuakesRender = zapQuakes.map((zapQuake, i) => (
+    <div className="mb-1" key={i}>
+      {zapQuake.nbZap !== 0 && (
         <SpellDisplay
           name="lightning"
           maxLevel={DATA_SPELLS[1].damage.length}
           level={props.zapLevel}
-          quantity={z.zap}
+          quantity={zapQuake.nbZap}
           size="sm"
         />
-      );
-    }
-    if (z.quake !== 0) {
-      quakeRender = (
+      )}
+      {zapQuake.nbQuake !== 0 && (
         <SpellDisplay
           name="quake"
           maxLevel={DATA_SPELLS[0].damage.length}
           level={props.quakeLevel}
-          quantity={z.quake}
+          quantity={zapQuake.nbQuake}
           size="sm"
         />
-      );
-    }
-    return (
-      <div className="mb-1" key={i}>
-        {zapRender} {quakeRender}
-      </div>
-    );
-  });
+      )}
+    </div>
+  ));
 
   return (
     <div className="bg-blue-200 p-3">
       <BuildingHeader
         building={props.building}
-        level={props.building.hp.length}
+        level={buildingLevel}
       />
       <LevelRange
-        value={props.building.hp.length}
+        value={buildingLevel}
         max={props.building.hp.length}
-        onChange={(value) => {
-          console.log("changed value " + value);
-        }}
+        onChange={(value) => setBuildingLevel(value)}
       />
       {zapQuakesRender}
     </div>
