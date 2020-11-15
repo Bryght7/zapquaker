@@ -5,6 +5,7 @@ import { BuildingCard } from "./BuildingCard";
 type Props = {
   zapLevel: number;
   quakeLevel: number;
+  spellCapacity: number;
 };
 
 export function ResultsSection(props: Props) {
@@ -15,6 +16,7 @@ export function ResultsSection(props: Props) {
         key={i}
         quakeLevel={props.quakeLevel}
         zapLevel={props.zapLevel}
+        spellCapacity={props.spellCapacity}
         building={building}
       />
     );

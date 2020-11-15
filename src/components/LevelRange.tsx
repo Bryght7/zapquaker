@@ -2,6 +2,7 @@ import React from 'react';
 
 type Props = {
   value: number;
+  min?: number;
   max: number;
   onChange: (value: number) => void;
 };
@@ -14,7 +15,7 @@ export function LevelRange(props: Props) {
   return (
     <input
       type="range"
-      min="1"
+      min={props.min ? props.min : 1}
       max={props.max}
       onChange={handleChange}
       value={props.value}

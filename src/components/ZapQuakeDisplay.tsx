@@ -6,29 +6,34 @@ type Props = {
   zapLevel: number;
   quakeLevel: number;
   zapQuake: ZapQuake;
+  spellCapacity: number;
 };
 
 export function ZapQuakeDisplay(props: Props) {
   return (
-    <div className="mb-1">
-      {props.zapQuake.nbZap !== 0 && (
+    <div className="mb-2 flex justify-center items-center space-x-2">
+      {props.zapQuake.nbZaps !== 0 && (
         <SpellDisplay
           name="lightning"
           maxLevel={DATA_SPELLS[1].damage.length}
           level={props.zapLevel}
-          quantity={props.zapQuake.nbZap}
+          quantity={props.zapQuake.nbZaps}
           size="sm"
         />
       )}
-      {props.zapQuake.nbQuake !== 0 && (
+      {props.zapQuake.nbQuakes !== 0 && (
         <SpellDisplay
           name="quake"
           maxLevel={DATA_SPELLS[0].damage.length}
           level={props.quakeLevel}
-          quantity={props.zapQuake.nbQuake}
+          quantity={props.zapQuake.nbQuakes}
           size="sm"
         />
       )}
+      <span className="spell-capacity-usage font-bold">
+        ({props.zapQuake.nbQuakes + props.zapQuake.nbZaps}/{props.spellCapacity}
+        )
+      </span>
     </div>
   );
 }

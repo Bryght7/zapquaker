@@ -17,7 +17,7 @@ afterEach(() => {
   container.remove();
 });
 
-it('should have correct min value', () => {
+it("should have correct default min value", () => {
   act(() => {
     render(
       <LevelRange value={1} max={9} onChange={(value) => {}} />,
@@ -25,7 +25,7 @@ it('should have correct min value', () => {
     );
   });
   const a = container.querySelector("input[type='range']");
-  expect(a?.getAttribute('min')).toBe('1');
+  expect(a?.getAttribute("min")).toBe("1");
 });
 
 it('should have correct max value', () => {

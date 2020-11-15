@@ -10,8 +10,8 @@ export type Spell = {
 };
 
 export type ZapQuake = {
-  nbZap: number;
-  nbQuake: number;
+  nbZaps: number;
+  nbQuakes: number;
 };
 
 // prettier-ignore
