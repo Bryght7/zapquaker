@@ -57,6 +57,7 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
 
 export function BuildingCard(props: Props) {
   const [buildingLevel, setBuildingLevel] = useState(props.building.hp.length);
+  const [showMore, setShowMore] = useState(false);
   const zapQuakes: ZapQuake[] = getZapQuakes(props, buildingLevel);
 
   return (
@@ -69,19 +70,61 @@ export function BuildingCard(props: Props) {
       />
       {zapQuakes.length === 0 ? (
         <div className="text-center">
-          <span>Cannot be destroyed using current parameters.</span>
+          <span className="no-combination">
+            Cannot be destroyed using current parameters.
+          </span>
         </div>
       ) : (
-        zapQuakes.map((z, i) => (
-          <ZapQuakeDisplay
-            key={i}
-            zapLevel={props.zapLevel}
-            quakeLevel={props.quakeLevel}
-            zapQuake={z}
-            spellCapacity={props.spellCapacity}
-          />
-        ))
+        // by default show lowest spell usage combinations
+        zapQuakes
+          .filter(
+            (z) =>
+              z.nbZaps + z.nbQuakes ===
+              zapQuakes[0].nbZaps + zapQuakes[0].nbQuakes
+          )
+          .map((z, i) => (
+            <ZapQuakeDisplay
+              key={i}
+              zapLevel={props.zapLevel}
+              quakeLevel={props.quakeLevel}
+              zapQuake={z}
+              spellCapacity={props.spellCapacity}
+            />
+          ))
       )}
+      {
+        // if not showing more, and there are results, and there is actually more results to show
+        !showMore &&
+          zapQuakes.length > 0 &&
+          zapQuakes.filter(
+            (z) =>
+              z.nbZaps + z.nbQuakes >
+              zapQuakes[0].nbZaps + zapQuakes[0].nbQuakes
+          ).length > 0 && (
+            <div className="text-center">
+              <button onClick={() => setShowMore(true)}>Show more...</button>
+            </div>
+          )
+      }
+      {
+        // if user wants to show more, render the rest
+        showMore &&
+          zapQuakes
+            .filter(
+              (z) =>
+                z.nbZaps + z.nbQuakes >
+                zapQuakes[0].nbZaps + zapQuakes[0].nbQuakes
+            )
+            .map((z, i) => (
+              <ZapQuakeDisplay
+                key={i}
+                zapLevel={props.zapLevel}
+                quakeLevel={props.quakeLevel}
+                zapQuake={z}
+                spellCapacity={props.spellCapacity}
+              />
+            ))
+      }
     </div>
   );
 }
