@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Building, DATA_SPELLS, ZapQuake } from "../gameData";
 import { BuildingHeader } from "./BuildingHeader";
 import { LevelRange } from "./LevelRange";
@@ -59,6 +59,10 @@ export function BuildingCard(props: Props) {
   const [buildingLevel, setBuildingLevel] = useState(props.building.hp.length);
   const [showMore, setShowMore] = useState(false);
   const zapQuakes: ZapQuake[] = getZapQuakes(props, buildingLevel);
+
+  useEffect(() => {
+    setShowMore(false);
+  }, [props.zapLevel, props.quakeLevel, buildingLevel]);
 
   return (
     <div className="rounded-lg p-4 shadow-lg bg-white">
