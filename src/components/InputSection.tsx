@@ -1,22 +1,19 @@
 import React from "react";
 import { DATA_SPELLS } from "../gameData";
 import { LevelRange } from "./LevelRange";
-import { SpellCapacity } from "./SpellCapacity";
 import { SpellDisplay } from "./SpellDisplay";
 
 type Props = {
   zapLevel: number;
   quakeLevel: number;
-  spellCapacity: number;
   setZapLevel: (value: React.SetStateAction<number>) => void;
   setQuakeLevel: (value: React.SetStateAction<number>) => void;
-  setSpellCapacity: (value: React.SetStateAction<number>) => void;
 };
 
 export function InputSection(props: Props) {
   return (
-    <div className="bg-red-100 flex justify-evenly space-x-2">
-      <div className="text-center">
+    <div className="flex justify-evenly space-x-2 px-6 lg:px-24 border-b">
+      <div className="text-center mb-4">
         <SpellDisplay
           name="lightning"
           level={props.zapLevel}
@@ -28,7 +25,7 @@ export function InputSection(props: Props) {
           onChange={(value) => props.setZapLevel(value)}
         />
       </div>
-      <div className="text-center">
+      <div className="text-center mb-4">
         <SpellDisplay
           name="quake"
           level={props.quakeLevel}
@@ -38,15 +35,6 @@ export function InputSection(props: Props) {
           value={props.quakeLevel}
           max={DATA_SPELLS[0].damage.length}
           onChange={(value) => props.setQuakeLevel(value)}
-        />
-      </div>
-      <div className="text-center">
-        <SpellCapacity capacity={props.spellCapacity} />
-        <LevelRange
-          value={props.spellCapacity}
-          min={6}
-          max={11}
-          onChange={(value) => props.setSpellCapacity(value)}
         />
       </div>
     </div>

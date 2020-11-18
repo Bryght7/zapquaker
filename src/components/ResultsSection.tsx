@@ -5,7 +5,6 @@ import { BuildingCard } from "./BuildingCard";
 type Props = {
   zapLevel: number;
   quakeLevel: number;
-  spellCapacity: number;
 };
 
 export function ResultsSection(props: Props) {
@@ -16,14 +15,14 @@ export function ResultsSection(props: Props) {
         key={i}
         quakeLevel={props.quakeLevel}
         zapLevel={props.zapLevel}
-        spellCapacity={props.spellCapacity}
+        spellCapacity={11}
         building={building}
       />
     );
   });
 
   return (
-    <div className="bg-blue-100 mx-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="p-6 lg:px-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 bg-gray-200">
       {buildings}
     </div>
   );

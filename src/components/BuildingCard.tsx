@@ -61,7 +61,7 @@ export function BuildingCard(props: Props) {
   const zapQuakes: ZapQuake[] = getZapQuakes(props, buildingLevel);
 
   return (
-    <div className="bg-blue-200 rounded-lg p-3">
+    <div className="rounded-lg p-4 shadow-lg bg-white">
       <BuildingHeader building={props.building} level={buildingLevel} />
       <LevelRange
         value={buildingLevel}
