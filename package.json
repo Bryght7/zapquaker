@@ -16,7 +16,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
-    "tailwindcss": "^1.7.6",
+    "tailwindcss": "^1.9.6",
     "typescript": "^3.7.5"
   },
   "scripts": {
