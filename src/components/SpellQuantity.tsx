@@ -8,7 +8,7 @@ type Props = {
 export function SpellQuantity(props: Props) {
   return (
     <p
-      className={`spell-quantity font-bold text-white text-center ${
+      className={`spell-quantity font-semibold text-white text-center ${
         props.size === "sm" && "text-sm"
       }`}
     >

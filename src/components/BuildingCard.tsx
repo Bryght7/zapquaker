@@ -63,11 +63,13 @@ export function BuildingCard(props: Props) {
   return (
     <div className="rounded-lg p-4 shadow-lg bg-white">
       <BuildingHeader building={props.building} level={buildingLevel} />
-      <LevelRange
-        value={buildingLevel}
-        max={props.building.hp.length}
-        onChange={(value) => setBuildingLevel(value)}
-      />
+      <div className="mb-2">
+        <LevelRange
+          value={buildingLevel}
+          max={props.building.hp.length}
+          onChange={(value) => setBuildingLevel(value)}
+        />
+      </div>
       {zapQuakes.length === 0 ? (
         <div className="text-center">
           <span className="no-combination">
@@ -102,7 +104,12 @@ export function BuildingCard(props: Props) {
               zapQuakes[0].nbZaps + zapQuakes[0].nbQuakes
           ).length > 0 && (
             <div className="text-center">
-              <button onClick={() => setShowMore(true)}>Show more...</button>
+              <button
+                className="text-gray-600"
+                onClick={() => setShowMore(true)}
+              >
+                Show more...
+              </button>
             </div>
           )
       }

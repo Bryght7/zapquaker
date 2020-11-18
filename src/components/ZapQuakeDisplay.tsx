@@ -30,7 +30,7 @@ export function ZapQuakeDisplay(props: Props) {
           size="sm"
         />
       )}
-      <span className="spell-capacity-usage font-bold">
+      <span className="spell-capacity-usage font-semibold text-gray-800">
         ({props.zapQuake.nbQuakes + props.zapQuake.nbZaps}/{props.spellCapacity}
         )
       </span>
