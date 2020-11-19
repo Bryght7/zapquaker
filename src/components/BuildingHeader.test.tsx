@@ -46,13 +46,24 @@ it("should have correct alt value", () => {
   expect(img?.alt).toBe("Test building");
 });
 
-it("should display correct text", () => {
+it("should display correct building name", () => {
   act(() => {
     render(
       <BuildingHeader building={building} level={building.hp.length} />,
       container
     );
   });
-  const span = container.querySelector("span");
-  expect(span?.textContent).toBe("Test building (level 5)");
+  const span = container.querySelectorAll("span")[0];
+  expect(span?.textContent).toBe("Test building");
+});
+
+it("should display correct building level", () => {
+  act(() => {
+    render(
+      <BuildingHeader building={building} level={building.hp.length} />,
+      container
+    );
+  });
+  const span = container.querySelectorAll("span")[1];
+  expect(span?.textContent).toContain("(level 5)");
 });
