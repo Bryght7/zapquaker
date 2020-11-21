@@ -109,7 +109,7 @@ export function BuildingCard(props: Props) {
           ).length > 0 && (
             <div className="text-center">
               <button
-                className="text-gray-600"
+                className="text-gray-600 focus:outline-none select-none"
                 onClick={() => setShowMore(true)}
               >
                 Show more...
