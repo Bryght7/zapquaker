@@ -1,4 +1,5 @@
 import React from "react";
+import { animated, useSpring } from "react-spring";
 import { DATA_SPELLS, ZapQuake } from "../gameData";
 import { SpellDisplay } from "./SpellDisplay";
 
@@ -10,8 +11,12 @@ type Props = {
 };
 
 export function ZapQuakeDisplay(props: Props) {
+  const fade = useSpring({ from: { opacity: 0 }, to: { opacity: 1 } });
   return (
-    <div className="mb-2 flex justify-center items-center space-x-2">
+    <animated.div
+      style={fade}
+      className="mb-2 flex justify-center items-center space-x-2"
+    >
       {props.zapQuake.nbZaps !== 0 && (
         <SpellDisplay
           name="lightning"
@@ -34,6 +39,6 @@ export function ZapQuakeDisplay(props: Props) {
         ({props.zapQuake.nbQuakes + props.zapQuake.nbZaps}/{props.spellCapacity}
         )
       </span>
-    </div>
+    </animated.div>
   );
 }
