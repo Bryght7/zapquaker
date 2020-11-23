@@ -23,8 +23,8 @@ export function FilterBar(props: Props) {
   }
 
   return (
-    <div className="flex px-6 lg:px-24 pt-6 bg-gray-200">
-      <div className="h-9 w-10 bg-white rounded-l-xl flex items-center justify-center">
+    <div className="flex px-6 lg:px-24 pt-6">
+      <div className="h-8 w-10 bg-white rounded-l-xl flex items-center justify-center">
         <svg
           className="w-5 text-gray-700"
           xmlns="http://www.w3.org/2000/svg"

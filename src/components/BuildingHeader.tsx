@@ -14,7 +14,7 @@ export function BuildingHeader(props: Props) {
         src={`/img/${props.building.id}_${props.level}.png`}
         alt={`${props.building.name}`}
       />
-      <span className="text-indigo-600">{props.building.name}</span>
+      <span className="text-blue-700">{props.building.name}</span>
       <span className="text-gray-800">&nbsp;(level {props.level})</span>
     </div>
   );

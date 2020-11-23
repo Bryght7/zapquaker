@@ -29,7 +29,7 @@ it("displays dark background if max level not reached", () => {
     ReactDOM.render(<SpellLevel level={5} maxLevel={6}/>, container);
   });
   const a = container.querySelector(".level-container");
-  expect(a?.classList).toContain('bg-gray-700');
+  expect(a?.classList).toContain("bg-gray-600");
 });
 
 it("displays special background if max level", () => {
@@ -37,5 +37,5 @@ it("displays special background if max level", () => {
     ReactDOM.render(<SpellLevel level={6} maxLevel={6}/>, container);
   });
   const a = container.querySelector(".level-container");
-  expect(a?.classList).toContain('bg-yellow-500');
+  expect(a?.classList).toContain("bg-yellow-400");
 });
