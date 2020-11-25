@@ -11,7 +11,12 @@ export function BuildingHeader(props: Props) {
     <div className="font-bold flex items-center">
       <img
         className="h-12 mr-3"
-        src={`/img/${props.building.id}_${props.level}.png`}
+        src={
+          // ignore level if archer queen or royal champion
+          props.building.id === "62" || props.building.id === "122"
+            ? `/img/${props.building.id}.png`
+            : `/img/${props.building.id}_${props.level}.png`
+        }
         alt={`${props.building.name}`}
       />
       <span className="text-blue-700">{props.building.name}</span>

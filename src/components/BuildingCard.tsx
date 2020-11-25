@@ -19,6 +19,11 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
   let nbSpells = 0;
   let hpLeft = hp;
 
+  // if building is a hero, can't be damaged by quakes, directly return zaps
+  if (props.building.id === "62" || props.building.id === "122") {
+    return [{ nbQuakes: 0, nbZaps: Math.ceil(hp / damageZap) }];
+  }
+
   for (let q = 0; nbSpells < props.spellCapacity && hpLeft > 0; q++) {
     for (let z = 1; nbSpells < props.spellCapacity && hpLeft > 0; z++) {
       let damage = z * damageZap; // by default zap damage

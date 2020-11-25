@@ -12,6 +12,18 @@ let building: Building = {
   hp: [100, 200, 300, 400, 500],
 };
 
+let archerQueen: Building = {
+  id: "62",
+  name: "Archer Queen",
+  hp: [100, 200, 300, 400, 500],
+};
+
+let royalChampion: Building = {
+  id: "122",
+  name: "Royal Champion",
+  hp: [100, 200, 300, 400, 500],
+};
+
 beforeEach(() => {
   // setup a DOM element as a render target
   container = document.createElement("div");
@@ -33,6 +45,31 @@ it("should have correct src value", () => {
   });
   const img = container.querySelector("img");
   expect(img?.src).toMatch(/.*\/img\/1_5\.png/);
+});
+
+it("should ignore level in src value if building is archer queen", () => {
+  act(() => {
+    render(
+      <BuildingHeader building={archerQueen} level={archerQueen.hp.length} />,
+      container
+    );
+  });
+  const img = container.querySelector("img");
+  expect(img?.src).toMatch(/.*\/img\/62\.png/);
+});
+
+it("should ignore level in src value if building is royal champion", () => {
+  act(() => {
+    render(
+      <BuildingHeader
+        building={royalChampion}
+        level={royalChampion.hp.length}
+      />,
+      container
+    );
+  });
+  const img = container.querySelector("img");
+  expect(img?.src).toMatch(/.*\/img\/122\.png/);
 });
 
 it("should have correct alt value", () => {
