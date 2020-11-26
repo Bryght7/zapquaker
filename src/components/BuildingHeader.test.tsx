@@ -1,7 +1,7 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-import { Building } from "../gameData";
+import { Building, DATA_BUILDINGS } from "../gameData";
 import { BuildingHeader } from "./BuildingHeader";
 
 let container: HTMLDivElement;
@@ -9,18 +9,6 @@ let container: HTMLDivElement;
 let building: Building = {
   id: "1",
   name: "Test building",
-  hp: [100, 200, 300, 400, 500],
-};
-
-let archerQueen: Building = {
-  id: "62",
-  name: "Archer Queen",
-  hp: [100, 200, 300, 400, 500],
-};
-
-let royalChampion: Building = {
-  id: "122",
-  name: "Royal Champion",
   hp: [100, 200, 300, 400, 500],
 };
 
@@ -50,7 +38,10 @@ it("should have correct src value", () => {
 it("should ignore level in src value if building is archer queen", () => {
   act(() => {
     render(
-      <BuildingHeader building={archerQueen} level={archerQueen.hp.length} />,
+      <BuildingHeader
+        building={DATA_BUILDINGS[13]}
+        level={DATA_BUILDINGS[13].hp.length}
+      />,
       container
     );
   });
@@ -62,14 +53,28 @@ it("should ignore level in src value if building is royal champion", () => {
   act(() => {
     render(
       <BuildingHeader
-        building={royalChampion}
-        level={royalChampion.hp.length}
+        building={DATA_BUILDINGS[14]}
+        level={DATA_BUILDINGS[14].hp.length}
       />,
       container
     );
   });
   const img = container.querySelector("img");
   expect(img?.src).toMatch(/.*\/img\/122\.png/);
+});
+
+it("should ignore level in src value if building is warden statue", () => {
+  act(() => {
+    render(
+      <BuildingHeader
+        building={DATA_BUILDINGS[15]}
+        level={DATA_BUILDINGS[15].hp.length}
+      />,
+      container
+    );
+  });
+  const img = container.querySelector("img");
+  expect(img?.src).toMatch(/.*\/img\/63\.png/);
 });
 
 it("should have correct alt value", () => {

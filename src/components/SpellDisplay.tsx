@@ -30,6 +30,7 @@ export function SpellDisplay(props: Props) {
         className={`rounded-lg ${props.size === "sm" ? "w-12" : "w-20"}`}
         src={`/img/spell_${props.name}.png`}
         alt={`Icon ${props.name}`}
+        draggable="false"
       />
     </div>
   );
