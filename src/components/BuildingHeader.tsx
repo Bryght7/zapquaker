@@ -22,8 +22,12 @@ export function BuildingHeader(props: Props) {
         alt={`${props.building.name}`}
         draggable="false"
       />
-      <span className="text-blue-700">{props.building.name}</span>
-      <span className="text-gray-800">&nbsp;(level {props.level})</span>
+      <span className="text-blue-700 dark:text-blue-300">
+        {props.building.name}
+      </span>
+      <span className="text-gray-800 dark:text-gray-100">
+        &nbsp;(level {props.level})
+      </span>
     </div>
   );
 }

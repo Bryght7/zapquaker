@@ -19,7 +19,7 @@ export function SpellDisplay(props: Props) {
   }
 
   return (
-    <div className="relative inline-block border border-indigo-700 rounded-lg bg-blue-500">
+    <div className="relative inline-block border border-blue-700 dark:border-blue-500 rounded-lg bg-blue-500 dark:bg-blue-700">
       {spellQuantityComponent}
       <SpellLevel
         level={props.level}

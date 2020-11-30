@@ -24,9 +24,9 @@ export function FilterBar(props: Props) {
 
   return (
     <div className="flex px-6 lg:px-24 pt-6">
-      <div className="h-8 w-10 bg-white rounded-l-xl flex items-center justify-center">
+      <div className="h-8 w-10 bg-white dark:bg-gray-800 rounded-l-xl flex items-center justify-center">
         <svg
-          className="w-5 text-gray-700"
+          className="w-5 text-gray-700 dark:text-gray-200"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -41,13 +41,13 @@ export function FilterBar(props: Props) {
         </svg>
       </div>
       <input
-        className="h-8 w-full bg-white outline-none"
+        className="h-8 w-full bg-white dark:bg-gray-800 dark:text-white outline-none"
         type="search"
         placeholder={props.placeholder ? props.placeholder : "Search"}
         value={value}
         onChange={handleChange}
       />
-      <div className="h-8 w-10 bg-white rounded-r-xl flex items-center justify-center">
+      <div className="h-8 w-10 bg-white dark:bg-gray-800 rounded-r-xl flex items-center justify-center">
         {value !== "" && (
           <button
             type="button"
@@ -55,7 +55,7 @@ export function FilterBar(props: Props) {
             onClick={handleClick}
           >
             <svg
-              className="w-5 text-gray-700"
+              className="w-5 text-gray-700 dark:text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"

@@ -12,7 +12,7 @@ type Props = {
 
 export function InputSection(props: Props) {
   return (
-    <div className="flex justify-evenly space-x-2 pt-4 px-6 lg:px-24 border-b bg-white">
+    <div className="flex justify-evenly space-x-2 pt-4 px-6 lg:px-24 border-b dark:border-gray-500 bg-white dark:bg-gray-800">
       <div className="text-center mb-4">
         <SpellDisplay
           name="lightning"

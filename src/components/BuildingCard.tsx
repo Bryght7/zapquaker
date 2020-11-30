@@ -74,7 +74,7 @@ export function BuildingCard(props: Props) {
   }, [props.zapLevel, props.quakeLevel, buildingLevel]);
 
   return (
-    <div className="rounded-lg p-4 shadow-lg bg-white">
+    <div className="rounded-lg p-4 shadow-lg bg-white dark:bg-gray-800">
       <BuildingHeader building={props.building} level={buildingLevel} />
       <div className="mb-2">
         <LevelRange
@@ -118,7 +118,7 @@ export function BuildingCard(props: Props) {
           ).length > 0 && (
             <div className="text-center">
               <button
-                className="text-gray-500 focus:outline-none select-none"
+                className="text-gray-500 dark:text-gray-300 focus:outline-none select-none"
                 onClick={() => setShowMore(true)}
               >
                 Show more...

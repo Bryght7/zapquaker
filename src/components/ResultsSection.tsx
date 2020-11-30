@@ -10,7 +10,7 @@ type Props = {
 
 export function ResultsSection(props: Props) {
   return (
-    <div className="p-6 lg:px-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 bg-gray-200">
+    <div className="p-6 lg:px-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 bg-gray-200 dark:bg-gray-600">
       {DATA_BUILDINGS.filter((building) =>
         building.name.toLowerCase().includes(props.filterText.toLowerCase())
       )
