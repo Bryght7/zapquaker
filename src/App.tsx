@@ -7,8 +7,12 @@ import { DATA_BUILDINGS } from "./gameData";
 import "./App.css";
 
 export default function App() {
-  const [zapLevel, setZapLevel] = useState(9);
-  const [quakeLevel, setQuakeLevel] = useState(5);
+  const [zapLevel, setZapLevel] = useState(
+    Number(localStorage.getItem("zapLevel")) || 9
+  );
+  const [quakeLevel, setQuakeLevel] = useState(
+    Number(localStorage.getItem("quakeLevel")) || 5
+  );
   const [randomPlaceHolder] = useState(
     DATA_BUILDINGS.map((b) => b.name)[
       Math.floor(Math.random() * DATA_BUILDINGS.length)
@@ -22,6 +26,14 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode.toString());
   }, [darkMode]);
+
+  useEffect(() => {
+    localStorage.setItem("zapLevel", zapLevel.toString());
+  }, [zapLevel]);
+
+  useEffect(() => {
+    localStorage.setItem("quakeLevel", quakeLevel.toString());
+  }, [quakeLevel]);
 
   return (
     <div className={`h-full ${darkMode ? "dark" : ""}`}>
