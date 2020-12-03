@@ -41,7 +41,7 @@ export function FilterBar(props: Props) {
         </svg>
       </div>
       <input
-        className="h-8 w-full bg-white dark:bg-gray-800 dark:text-white outline-none"
+        className="h-8 w-full bg-white dark:bg-gray-800 dark:text-white outline-none placeholder-gray-700 dark:placeholder-gray-300"
         type="search"
         placeholder={props.placeholder ? props.placeholder : "Search"}
         value={value}
