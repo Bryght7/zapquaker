@@ -1,6 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT SHIELDS -->
+<!--
+See the bottom of this document for the declaration of the reference variables
+-->
+
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a360c189-d8c1-43a9-ba61-f822f0bf2270/deploy-status)](https://app.netlify.com/sites/zapquaker/deploys)
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <p align="center">
+    <a href="https://zapquaker.netlify.app/">
+        <img src="https://zapquaker.netlify.app/logo192.png" height="90px"/>
+    </a>
+  </p>
+  <h2 align="center">Zapquaker</h2>
+  <p align="center">
+    Get all zapquake combinations to destroy a building, according to your spell levels.
+    <br />
+    <br />
+    <a href="https://zapquaker.netlify.app/">View Live</a>
+    ·
+    <a href="https://github.com/Bryght7/zapquaker/issues/new">Report Bug</a>
+    ·
+    <a href="https://github.com/Bryght7/zapquaker/issues/new">Request Update/Feature</a>
+  </p>
+</p>
+
+<!-- TABLE OF CONTENTS -->
+
+## Table of Contents
+
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Available scripts](#available-scripts)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+<p align="center">
+    <img src="https://i.imgur.com/edHwqk2.gif" alt="Demo screenshot"/>
+</p>
+
+## Built With
+
+- [React](https://reactjs.org) - _A JavaScript library for building user interfaces_
+- [Tailwind CSS](https://tailwindcss.com/) - _Rapidly build modern websites without ever leaving your HTML_
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 12.13.0 or higher
+- npm
+
+### Installation
+
+### `git clone https://github.com/Bryght7/zapquaker.git`
+Clones the repository.
+
+### `npm install`
+Installs npm packages & dependencies for the project.
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
@@ -27,18 +96,33 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+<!-- CONTRIBUTING -->
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- LICENSE -->
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Distributed under the MIT License. See `LICENSE.md` for more information.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- CONTACT -->
+
+## Contact
+[Send a message on Reddit](https://www.reddit.com/message/compose/?to=Bryght7)
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[issues-shield]: https://img.shields.io/github/issues/Bryght7/zapquaker
+[issues-url]: https://github.com/Bryght7/zapquaker/issues
+[license-shield]: https://img.shields.io/github/license/bryght7/zapquaker
+[license-url]: https://github.com/Bryght7/zapquaker/blob/master/LICENSE.md
