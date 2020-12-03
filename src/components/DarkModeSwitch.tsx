@@ -14,7 +14,7 @@ export function DarkModeSwitch(props: Props) {
     <div>
       {!props.darkMode && (
         <svg
-          className="w-7 hover:text-blue-500 cursor-pointer"
+          className="w-7 hover:text-blue-400 cursor-pointer"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"

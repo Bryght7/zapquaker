@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: Bebas;
+    font-weight: 400;
+    src: url(/fonts/Bebas-Regular.otf) format("opentype");
+  }
+}
+
 @layer components {
   input[type='range'] {
     @apply w-full bg-transparent appearance-none my-1;

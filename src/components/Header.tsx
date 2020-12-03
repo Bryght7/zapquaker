@@ -8,9 +8,12 @@ type Props = {
 
 export function Header(props: Props) {
   return (
-    <header className="px-6 lg:px-24 h-12 font-bold text-lg text-blue-900 dark:text-blue-100 border-b dark:border-gray-500 flex items-center justify-between bg-white dark:bg-gray-800 select-none cursor-default">
-      <span>Zapquaker</span>
-      <div className="flex space-x-4">
+    <header className="px-6 lg:px-24 h-12 text-blue-700 dark:text-blue-100 border-b dark:border-gray-500 flex items-center justify-between bg-white dark:bg-gray-800 select-none cursor-default">
+      <div className="font-logo font-semibold text-2xl tracking-wide ">
+        <span className="ml-3 text-yellow-400">Zap</span>
+        <span>quaker</span>
+      </div>
+      <div className="flex space-x-4 text-lg">
         <DarkModeSwitch
           darkMode={props.darkMode}
           setDarkMode={props.setDarkMode}
@@ -22,7 +25,7 @@ export function Header(props: Props) {
           title="Github"
         >
           <svg
-            className="w-6 mt-0.5 hover:text-blue-500"
+            className="w-6 mt-0.5 hover:text-blue-400 dark:hover:text-blue-300"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
