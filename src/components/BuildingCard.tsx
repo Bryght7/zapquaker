@@ -84,7 +84,7 @@ export function BuildingCard(props: Props) {
         />
       </div>
       {zapQuakes.length === 0 ? (
-        <div className="text-center">
+        <div className="text-center dark:text-gray-200">
           <span className="no-combination">
             Cannot be destroyed using current parameters.
           </span>
