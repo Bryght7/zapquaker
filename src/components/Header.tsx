@@ -9,10 +9,9 @@ type Props = {
 export function Header(props: Props) {
   return (
     <header className="px-6 lg:px-24 h-12 text-blue-700 dark:text-blue-100 border-b dark:border-gray-500 flex items-center justify-between bg-white dark:bg-gray-800 select-none cursor-default">
-      <div className="font-logo font-semibold text-2xl tracking-wide ">
-        <span className="ml-3 text-yellow-400">Zap</span>
-        <span>quaker</span>
-      </div>
+      <h1 className="font-logo font-semibold text-2xl tracking-wide ">
+        <span className="ml-3 text-yellow-400">Zap</span>quaker
+      </h1>
       <div className="flex space-x-4 text-lg">
         <DarkModeSwitch
           darkMode={props.darkMode}
