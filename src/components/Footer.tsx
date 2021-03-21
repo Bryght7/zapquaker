@@ -1,11 +1,13 @@
 import React from "react";
+import { Donation } from "./Donation";
 
 type Props = {};
 
 export function Footer(props: Props) {
   return (
-    <footer className="flex items-center justify-center h-12 text-blue-700 bg-white border-t dark:bg-gray-800 dark:border-gray-500 dark:text-blue-100">
-      ✔ Last update: December 2020 patch
+    <footer className="flex flex-col items-center py-4 bg-white border-t dark:bg-gray-800 dark:border-gray-500 dark:text-blue-100">
+      <p className="mb-3">✔ Last update: December 2020 patch</p>
+      <Donation></Donation>
     </footer>
   );
 }
