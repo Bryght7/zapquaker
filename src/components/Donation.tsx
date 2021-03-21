@@ -26,7 +26,7 @@ export function Donation(props: Props) {
     <div className="flex flex-col items-center text-sm">
       <p>{messages[Math.floor(Math.random() * messages.length)]}</p>
       <a
-        className="text-blue-700 underline"
+        className="text-blue-700 underline dark:text-blue-400"
         href="https://www.buymeacoffee.com/Bryght7"
         target="_blank"
         rel="noopener noreferrer"
