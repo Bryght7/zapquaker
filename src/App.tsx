@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FilterBar } from "./components/FilterBar";
 import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import { InputSection } from "./components/InputSection";
 import { ResultsSection } from "./components/ResultsSection";
 import { DATA_BUILDINGS } from "./gameData";
@@ -54,6 +55,7 @@ export default function App() {
           quakeLevel={quakeLevel}
           filterText={filterText}
         />
+        <Footer></Footer>
       </div>
     </div>
   );
