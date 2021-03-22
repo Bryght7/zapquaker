@@ -23,8 +23,8 @@ export function FilterBar(props: Props) {
   }
 
   return (
-    <div className="flex px-6 lg:px-24 pt-6">
-      <div className="h-8 w-10 bg-white dark:bg-gray-800 rounded-l-xl flex items-center justify-center">
+    <div className="flex px-6 pt-6 lg:px-24">
+      <div className="flex items-center justify-center w-10 h-8 bg-white dark:bg-gray-800 rounded-l-xl">
         <svg
           className="w-5 text-gray-700 dark:text-gray-200"
           xmlns="http://www.w3.org/2000/svg"
@@ -41,21 +41,23 @@ export function FilterBar(props: Props) {
         </svg>
       </div>
       <input
-        className="h-8 w-full bg-white dark:bg-gray-800 dark:text-white outline-none placeholder-gray-700 dark:placeholder-gray-300"
+        id="inputSearchBar"
+        className="w-full h-8 placeholder-gray-700 bg-white outline-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-300"
         type="search"
         placeholder={props.placeholder ? props.placeholder : "Search"}
         value={value}
         onChange={handleChange}
       />
-      <div className="h-8 w-10 bg-white dark:bg-gray-800 rounded-r-xl flex items-center justify-center">
+      <div className="flex items-center justify-center w-10 h-8 bg-white dark:bg-gray-800 rounded-r-xl">
         {value !== "" && (
           <button
+            id="btnClearSearchBar"
             type="button"
             className="focus:outline-none"
             onClick={handleClick}
           >
             <svg
-              className="w-5 text-gray-700 dark:text-gray-200"
+              className="w-5 text-gray-700 pointer-events-none dark:text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
