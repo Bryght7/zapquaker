@@ -6,7 +6,7 @@ type Props = {};
 export function Footer(props: Props) {
   return (
     <footer className="flex flex-col items-center py-4 bg-white border-t dark:bg-gray-800 dark:border-gray-500 dark:text-blue-100">
-      <p className="mb-3">✔ Last update: December 2020 patch</p>
+      <p className="mb-4">✔ Last update: December 2020 patch</p>
       <Donation></Donation>
     </footer>
   );

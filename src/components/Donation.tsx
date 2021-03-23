@@ -26,12 +26,17 @@ export function Donation(props: Props) {
     <div className="flex flex-col items-center text-sm">
       <p>{messages[Math.floor(Math.random() * messages.length)]}</p>
       <a
-        className="text-blue-700 underline dark:text-blue-400"
+        className="mt-2"
         href="https://www.buymeacoffee.com/Bryght7"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Buy me a coffee
+        <img
+          src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png"
+          alt="Buy Me A Coffee"
+          height="37"
+          width="135"
+        />
       </a>
     </div>
   );
