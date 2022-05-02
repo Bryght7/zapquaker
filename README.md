@@ -2,7 +2,7 @@
 <!--
 See the bottom of this document for the declaration of the reference variables
 -->
-
+[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a360c189-d8c1-43a9-ba61-f822f0bf2270/deploy-status)](https://app.netlify.com/sites/zapquaker/deploys)
@@ -23,23 +23,28 @@ See the bottom of this document for the declaration of the reference variables
     <a href="https://zapquaker.netlify.app/">View Live</a>
     ·
     <a href="https://github.com/Bryght7/zapquaker/issues/new">Report Bug</a>
-    ·
-    <a href="https://github.com/Bryght7/zapquaker/issues/new">Request Update/Feature</a>
   </p>
 </p>
+
+
+> __Repository status:__ The project has reached a stable, usable state but is no longer being actively developed. However, the game data will be kept up-to-date to the best of my ability, as balance patches are released.
 
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
-
+- [Table of Contents](#table-of-contents)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Available scripts](#available-scripts)
+  - [`git clone https://github.com/Bryght7/zapquaker.git`](#git-clone-httpsgithubcombryght7zapquakergit)
+  - [`npm install`](#npm-install)
+- [Available Scripts](#available-scripts)
+  - [`npm start`](#npm-start)
+  - [`npm test`](#npm-test)
+  - [`npm run build`](#npm-run-build)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
 
 <p align="center">
     <img src="https://i.imgur.com/edHwqk2.gif" alt="Demo screenshot"/>
@@ -113,12 +118,6 @@ Contributions are what make the open source community such an amazing place to b
 ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
-
-<!-- CONTACT -->
-
-## Contact
-[Send a message on Reddit](https://www.reddit.com/message/compose/?to=Bryght7)
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
