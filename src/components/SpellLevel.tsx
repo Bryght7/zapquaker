@@ -11,6 +11,11 @@ export function SpellLevel(props: Props) {
     return props.level === props.maxLevel;
   }
 
+  let sizeClasses = "w-6 h-6";
+  if (props.size === "sm") {
+    sizeClasses = "w-4 h-4 " + (props.level >= 10 ? "text-xs" : "text-sm");
+  }
+
   return (
     <div
       className={`level-container shadow-md absolute bottom-0 rounded-md ml-1 mb-1 flex items-center justify-center font-bold border
@@ -19,7 +24,7 @@ export function SpellLevel(props: Props) {
         ? "text-black border-yellow-300 bg-yellow-400"
         : "text-white border-gray-900 bg-gray-600"
     }
-    ${props.size === "sm" ? "w-4 h-4 text-sm" : "w-6 h-6"}`}
+    ${sizeClasses}`}
     >
       {props.level}
     </div>
