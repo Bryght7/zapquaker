@@ -39,8 +39,8 @@ it("should ignore level in src value if building is archer queen", () => {
   act(() => {
     render(
       <BuildingHeader
-        building={DATA_BUILDINGS[13]}
-        level={DATA_BUILDINGS[13].hp.length}
+        building={DATA_BUILDINGS[12]}
+        level={DATA_BUILDINGS[12].hp.length}
       />,
       container
     );
@@ -53,8 +53,8 @@ it("should ignore level in src value if building is royal champion", () => {
   act(() => {
     render(
       <BuildingHeader
-        building={DATA_BUILDINGS[14]}
-        level={DATA_BUILDINGS[14].hp.length}
+        building={DATA_BUILDINGS[13]}
+        level={DATA_BUILDINGS[13].hp.length}
       />,
       container
     );
@@ -67,8 +67,8 @@ it("should ignore level in src value if building is warden statue", () => {
   act(() => {
     render(
       <BuildingHeader
-        building={DATA_BUILDINGS[15]}
-        level={DATA_BUILDINGS[15].hp.length}
+        building={DATA_BUILDINGS[14]}
+        level={DATA_BUILDINGS[14].hp.length}
       />,
       container
     );
