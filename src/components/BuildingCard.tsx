@@ -65,16 +65,35 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
 }
 
 export function BuildingCard(props: Props) {
-  const [buildingLevel, setBuildingLevel] = useState(props.building.hp.length);
+  // localStorage key "buildingLevels" exists ? then get the value of the building
+  // otherwise, default to the building max level
+  const [buildingLevel, setBuildingLevel] = useState(
+    Number(
+      localStorage.getItem("buildingLevels") &&
+        JSON.parse(localStorage.getItem("buildingLevels")!)[props.building.id]
+    ) || props.building.hp.length
+  );
   const [showMore, setShowMore] = useState(false);
   const zapQuakes: ZapQuake[] = getZapQuakes(props, buildingLevel);
+
+  useEffect(() => {
+    // parse the build levels object from localstorage
+    // if not found, initialize object
+    const buildingLevels = JSON.parse(
+      localStorage.getItem("buildingLevels")!
+    ) || { [props.building.id]: buildingLevel };
+    // update the level for the building
+    buildingLevels[props.building.id] = buildingLevel;
+    // update localstorage
+    localStorage.setItem("buildingLevels", JSON.stringify(buildingLevels));
+  }, [buildingLevel, props.building.id]);
 
   useEffect(() => {
     setShowMore(false);
   }, [props.zapLevel, props.quakeLevel, buildingLevel]);
 
   return (
-    <div className="rounded-lg p-4 shadow-lg bg-white dark:bg-gray-800">
+    <div className="p-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
       <BuildingHeader building={props.building} level={buildingLevel} />
       <div className="mb-2">
         <LevelRange
@@ -118,7 +137,7 @@ export function BuildingCard(props: Props) {
           ).length > 0 && (
             <div className="text-center">
               <button
-                className="text-gray-500 dark:text-gray-300 focus:outline-none select-none"
+                className="text-gray-500 select-none dark:text-gray-300 focus:outline-none"
                 onClick={() => setShowMore(true)}
               >
                 Show more...
