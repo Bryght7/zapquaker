@@ -12,8 +12,8 @@ type Props = {
 
 export function InputSection(props: Props) {
   return (
-    <div className="flex justify-evenly space-x-2 pt-4 px-6 lg:px-24 border-b dark:border-gray-500 bg-white dark:bg-gray-800">
-      <div className="text-center mb-4">
+    <div className="flex px-6 pt-4 mt-12 space-x-2 bg-white border-b justify-evenly lg:px-24 dark:border-gray-500 dark:bg-gray-800">
+      <div className="mb-4 text-center">
         <SpellDisplay
           name="lightning"
           level={props.zapLevel}
@@ -25,7 +25,7 @@ export function InputSection(props: Props) {
           onChange={(value) => props.setZapLevel(value)}
         />
       </div>
-      <div className="text-center mb-4">
+      <div className="mb-4 text-center">
         <SpellDisplay
           name="quake"
           level={props.quakeLevel}
