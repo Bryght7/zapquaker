@@ -1,6 +1,6 @@
 /* Credits to sahilranpuri at https://sahilranpuri.hashnode.dev/how-to-make-a-tada-effect-in-pure-css */
 .animated {
-  animation-duration: 1.5s;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
 }
 
@@ -18,13 +18,13 @@
   50%,
   70%,
   90% {
-    transform: scale3d(1.15, 1.15, 1.15) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
   }
 
   40%,
   60%,
   80% {
-    transform: scale3d(1.15, 1.15, 1.15) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
   }
 
   100% {

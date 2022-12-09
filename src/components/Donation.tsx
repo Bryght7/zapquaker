@@ -7,17 +7,15 @@ export function Donation(props: Props) {
   return (
     <div className="flex items-center">
       <a
-        className="flex items-center h-7 px-2.5 text-xs sm:text-sm text-white bg-red-500 hover:bg-red-600 rounded"
+        className="flex items-center h-7 sm:h-9 px-2.5 sm:px-3 text-xs sm:text-base text-white bg-green-500 hover:bg-green-600 rounded"
         href="https://www.buymeacoffee.com/Bryght7"
         target="_blank"
         rel="noopener noreferrer"
       >
         <svg
-          width="16"
-          height="16"
           viewBox="0 0 884 1279"
           fill="none"
-          className="mr-1 animated tada"
+          className="w-4 h-4 mr-1 sm:w-5 sm:h-5 animated tada"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -77,7 +75,7 @@ export function Donation(props: Props) {
             fill="#0D0C22"
           ></path>
         </svg>
-        <span className="pb-px">Buy me a coffee</span>
+        <span>Buy me a coffee</span>
       </a>
     </div>
   );
