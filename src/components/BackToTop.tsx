@@ -9,7 +9,7 @@ export function BackToTop(props: Props) {
   return (
     <button
       onClick={handleOnClick}
-      className="fixed right-0 h-12 m-auto text-center align-middle bg-gray-500 shadow-xl hover:bg-gray-600 w-14 rounded-l-xl bottom-20"
+      className="fixed right-0 h-12 m-auto text-center align-middle bg-gray-500 shadow-xl backToTop hover:bg-gray-600 w-14 rounded-l-xl bottom-20"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
