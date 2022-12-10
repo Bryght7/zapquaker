@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import "./App.css";
+import { BackToTop } from "./components/BackToTop";
 import { FilterBar } from "./components/FilterBar";
-import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
 import { InputSection } from "./components/InputSection";
 import { ResultsSection } from "./components/ResultsSection";
 import { DATA_BUILDINGS } from "./gameData";
-import "./App.css";
 
 export default function App() {
   const [zapLevel, setZapLevel] = useState(
@@ -23,6 +24,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("darkMode") === "true" || false
   );
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode.toString());
@@ -35,6 +37,12 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("quakeLevel", quakeLevel.toString());
   }, [quakeLevel]);
+
+  const handleOnScroll = (event: Event) => {
+    const scrolled = document.documentElement.scrollTop;
+    setShowBackToTop(window.innerWidth < 768 && scrolled >= 600); // md breakpoint
+  };
+  window.addEventListener("scroll", handleOnScroll);
 
   return (
     <div className={`h-full ${darkMode ? "dark" : ""}`}>
@@ -57,6 +65,7 @@ export default function App() {
         />
         <Footer></Footer>
       </div>
+      {showBackToTop && <BackToTop />}
     </div>
   );
 }
