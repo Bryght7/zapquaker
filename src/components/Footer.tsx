@@ -5,7 +5,7 @@ type Props = {};
 export function Footer(props: Props) {
   return (
     <footer className="flex flex-col items-center py-4 bg-white border-t dark:bg-gray-800 dark:border-gray-500 dark:text-blue-100">
-      <p>✔ Last update: TH15 Update</p>
+      <p>✔ Last update: June 2023 Update</p>
       <a
         href="https://github.com/Bryght7/zapquaker"
         target="_blank"
