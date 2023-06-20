@@ -1,5 +1,5 @@
-import React from 'react';
-import { Building } from '../gameData';
+import React from "react";
+import { Building } from "../gameData";
 
 type Props = {
   building: Building;
@@ -13,11 +13,11 @@ export function BuildingHeader(props: Props) {
         className="h-12 mr-3"
         src={
           // ignore level if archer queen, warden statue or royal champion
-          props.building.id === '62' ||
-          props.building.id === '63' ||
-          props.building.id === '122'
-            ? `/img/${props.building.id}.png`
-            : `/img/${props.building.id}_${props.level}.png`
+          props.building.id === "62" ||
+          props.building.id === "63" ||
+          props.building.id === "122"
+            ? `/img/${props.building.id}.webp`
+            : `/img/${props.building.id}_${props.level}.webp`
         }
         alt={`${props.building.name}`}
         draggable="false"

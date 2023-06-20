@@ -32,7 +32,7 @@ it("should have correct src value", () => {
     );
   });
   const img = container.querySelector("img");
-  expect(img?.src).toMatch(/.*\/img\/1_5\.png/);
+  expect(img?.src).toMatch(/.*\/img\/1_5\.webp/);
 });
 
 it("should ignore level in src value if building is archer queen", () => {
@@ -46,7 +46,7 @@ it("should ignore level in src value if building is archer queen", () => {
     );
   });
   const img = container.querySelector("img");
-  expect(img?.src).toMatch(/.*\/img\/62\.png/);
+  expect(img?.src).toMatch(/.*\/img\/62\.webp/);
 });
 
 it("should ignore level in src value if building is royal champion", () => {
@@ -60,7 +60,7 @@ it("should ignore level in src value if building is royal champion", () => {
     );
   });
   const img = container.querySelector("img");
-  expect(img?.src).toMatch(/.*\/img\/122\.png/);
+  expect(img?.src).toMatch(/.*\/img\/122\.webp/);
 });
 
 it("should ignore level in src value if building is warden statue", () => {
@@ -74,7 +74,7 @@ it("should ignore level in src value if building is warden statue", () => {
     );
   });
   const img = container.querySelector("img");
-  expect(img?.src).toMatch(/.*\/img\/63\.png/);
+  expect(img?.src).toMatch(/.*\/img\/63\.webp/);
 });
 
 it("should have correct alt value", () => {

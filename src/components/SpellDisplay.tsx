@@ -28,7 +28,7 @@ export function SpellDisplay(props: Props) {
       />
       <img
         className={`rounded-lg ${props.size === "sm" ? "w-12" : "w-20"}`}
-        src={`/img/spell_${props.name}.png`}
+        src={`/img/spell_${props.name}.webp`}
         alt={`Icon ${props.name}`}
         draggable="false"
       />
