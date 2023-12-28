@@ -9,6 +9,8 @@ type Props = {
   quakeLevel: number;
   spellCapacity: number;
   building: Building;
+  useGA: boolean;
+  gaLevel: number;
 };
 
 function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
@@ -16,21 +18,32 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
   const hp = props.building.hp[buildingLevel - 1];
   const damageZap = DATA_SPELLS[1].damage[props.zapLevel - 1];
   const damageQuake = DATA_SPELLS[0].damage[props.quakeLevel - 1]; // to be divided by 100
+  const damageGA = DATA_SPELLS[2].damage[props.gaLevel - 1];
+  let useGA = props.useGA;
   let nbSpells = 0;
   let hpLeft = hp;
-
+  if(useGA && hp<=damageGA){
+      // if building gets destroyed by giant arrow only, we got a zapquake combination
+      return [{ nbQuakes: 0, nbZaps: 0, useGA: useGA }];
+  }
   // if building is a hero, can't be damaged by quakes
   // directly return nb of zaps if <= spell capacity
   if (props.building.id === "62" || props.building.id === "122") {
-    const nbZaps = Math.ceil(hp / damageZap);
+    if(useGA){
+      hpLeft -= damageGA;
+    }
+    const nbZaps = Math.ceil(hpLeft / damageZap);
     return nbZaps <= props.spellCapacity
-      ? [{ nbQuakes: 0, nbZaps: nbZaps }]
+      ? [{ nbQuakes: 0, nbZaps: nbZaps, useGA: useGA}]
       : [];
   }
 
   for (let q = 0; nbSpells < props.spellCapacity && hpLeft > 0; q++) {
-    for (let z = 1; nbSpells < props.spellCapacity && hpLeft > 0; z++) {
+    for (let z = 0; nbSpells < props.spellCapacity && hpLeft > 0; z++) {
       let damage = z * damageZap; // by default zap damage
+      if(useGA){
+        damage += damageGA;
+      }
       if (q > 0) {
         let quakesMultiplier = 1; // successive quakes multiplier
         if (q > 1) {
@@ -47,11 +60,14 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
       hpLeft = hp - damage; // deal damage to building
       if (hpLeft <= 0) {
         // if building is destroyed, we got a zapquake combination
-        result.push({ nbQuakes: q, nbZaps: z });
+        result.push({ nbQuakes: q, nbZaps: z, useGA: useGA });
       }
       nbSpells = q + z; // update nbSpells
     }
     hpLeft = hp; // repair building for next test
+    if(useGA){
+      hpLeft = hp-DATA_SPELLS[2].damage[props.gaLevel - 1]; // if giant arrow is used subtract its damage from building hp
+    }
   }
 
   // sort by amount of spells used
@@ -123,6 +139,8 @@ export function BuildingCard(props: Props) {
               quakeLevel={props.quakeLevel}
               zapQuake={z}
               spellCapacity={props.spellCapacity}
+              useGA={props.useGA}
+              gaLevel={props.gaLevel}
             />
           ))
       )}
@@ -161,6 +179,8 @@ export function BuildingCard(props: Props) {
                 quakeLevel={props.quakeLevel}
                 zapQuake={z}
                 spellCapacity={props.spellCapacity}
+                useGA={props.useGA}
+                gaLevel={props.gaLevel}
               />
             ))
       }
