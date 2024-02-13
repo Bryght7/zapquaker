@@ -51,8 +51,8 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
       }
       nbSpells = q + z; // update nbSpells
     }
-    // Can't be destroyed with Zaps alone, reset nbSpells to 0 to continue loop if below max capacity
-    if (result.length === 0 && q < props.spellCapacity){
+    // Reset nbSpells to 0 to continue loop if below max capacity
+    if (q < props.spellCapacity){
       nbSpells = 0
     }
     hpLeft = hp; // repair building for next test
