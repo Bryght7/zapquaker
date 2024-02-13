@@ -51,6 +51,10 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
       }
       nbSpells = q + z; // update nbSpells
     }
+    // Can't be destroyed with Zaps alone, reset nbSpells to 0 to continue loop
+    if (result.length === 0){
+      nbSpells = 0
+    }
     hpLeft = hp; // repair building for next test
   }
 
