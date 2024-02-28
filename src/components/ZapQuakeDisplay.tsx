@@ -8,6 +8,8 @@ type Props = {
   quakeLevel: number;
   zapQuake: ZapQuake;
   spellCapacity: number;
+  useGA: boolean;
+  gaLevel: number;
 };
 
 export function ZapQuakeDisplay(props: Props) {
@@ -17,6 +19,15 @@ export function ZapQuakeDisplay(props: Props) {
       style={fade}
       className="mb-2 flex justify-center items-center space-x-2"
     >
+      {props.useGA && (
+        <SpellDisplay
+          name="giant_arrow"
+          maxLevel={DATA_SPELLS[2].damage.length}
+          level={props.gaLevel}
+          quantity={1}
+          size="sm"
+        />
+      )}
       {props.zapQuake.nbZaps !== 0 && (
         <SpellDisplay
           name="lightning"

@@ -6,6 +6,8 @@ type Props = {
   zapLevel: number;
   quakeLevel: number;
   filterText: string;
+  useGA: boolean;
+  gaLevel: number;
 };
 
 export function ResultsSection(props: Props) {
@@ -22,6 +24,8 @@ export function ResultsSection(props: Props) {
             zapLevel={props.zapLevel}
             spellCapacity={11}
             building={building}
+            gaLevel={props.gaLevel}
+            useGA={props.useGA}
           />
         ))}
     </div>

@@ -12,6 +12,7 @@ export type Spell = {
 export type ZapQuake = {
   nbZaps: number;
   nbQuakes: number;
+  useGA: boolean;
 };
 
 // prettier-ignore
@@ -42,4 +43,5 @@ export const DATA_BUILDINGS: Building[] = [
 export const DATA_SPELLS: Spell[] = [
   { id: "earthquake", damage: [14.5,17,21,25,29] },
   { id: "lightning", damage: [150,180,210,240,270,320,400,480,560,600,640] },
+  { id: "giant-arrow", damage: [750,750,850,850,850,1000,1000,1000,1200,1200,1200,1500,1500,1500,1750,1750,1750,1950] },
 ];

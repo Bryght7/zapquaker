@@ -32,6 +32,8 @@ it("should show message if building cannot be destroyed", () => {
         quakeLevel={1}
         spellCapacity={1}
         building={building}
+        gaLevel={11}
+        useGA={false}
       />,
       container
     );
