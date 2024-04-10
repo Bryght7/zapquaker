@@ -6,8 +6,11 @@ import { SpellDisplay } from "./SpellDisplay";
 type Props = {
   zapLevel: number;
   quakeLevel: number;
+  arrowLevel: number;
   setZapLevel: (value: React.SetStateAction<number>) => void;
   setQuakeLevel: (value: React.SetStateAction<number>) => void;
+  setArrowLevel: (value: React.SetStateAction<number>) => void;
+
 };
 
 export function InputSection(props: Props) {
@@ -25,6 +28,7 @@ export function InputSection(props: Props) {
           onChange={(value) => props.setZapLevel(value)}
         />
       </div>
+      
       <div className="mb-4 text-center">
         <SpellDisplay
           name="quake"
@@ -37,6 +41,21 @@ export function InputSection(props: Props) {
           onChange={(value) => props.setQuakeLevel(value)}
         />
       </div>
+      
+      {props.arrowLevel !== 0 && (
+        <div className="mb-4 text-center">
+          <SpellDisplay
+            name="giantarrow"
+            level={props.arrowLevel}
+            maxLevel={DATA_SPELLS[2].damage.length}
+          />
+          <LevelRange
+            value={props.arrowLevel}
+            max={DATA_SPELLS[2].damage.length}
+            onChange={(value) => props.setArrowLevel(value)}
+          />
+        </div>
+      )}
     </div>
   );
 }

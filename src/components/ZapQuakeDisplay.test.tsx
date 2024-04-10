@@ -22,6 +22,7 @@ it("should display spells", () => {
   let zapQuake: ZapQuake = {
     nbQuakes: 2,
     nbZaps: 8,
+    hasArrow: true
   };
 
   act(() => {

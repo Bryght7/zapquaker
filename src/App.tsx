@@ -12,6 +12,9 @@ export default function App() {
   const [zapLevel, setZapLevel] = useState(
     Number(localStorage.getItem("zapLevel")) || 9
   );
+  const [arrowLevel, setArrowLevel] = useState(
+    Number(localStorage.getItem("arrowLevel")) || 0
+  );
   const [quakeLevel, setQuakeLevel] = useState(
     Number(localStorage.getItem("quakeLevel")) || 5
   );
@@ -31,6 +34,10 @@ export default function App() {
   }, [darkMode]);
 
   useEffect(() => {
+    localStorage.setItem("arrowLevel", arrowLevel.toString());
+  }, [arrowLevel]);
+
+  useEffect(() => {
     localStorage.setItem("zapLevel", zapLevel.toString());
   }, [zapLevel]);
 
@@ -47,10 +54,13 @@ export default function App() {
   return (
     <div className={`h-full ${darkMode ? "dark" : ""}`}>
       <div className="h-full bg-gray-200 dark:bg-gray-600">
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} setArrowLevel={setArrowLevel}
+ />
         <InputSection
           zapLevel={zapLevel}
           setZapLevel={setZapLevel}
+          arrowLevel={arrowLevel}
+          setArrowLevel={setArrowLevel}
           quakeLevel={quakeLevel}
           setQuakeLevel={setQuakeLevel}
         />
@@ -60,6 +70,7 @@ export default function App() {
         />
         <ResultsSection
           zapLevel={zapLevel}
+          arrowLevel={arrowLevel}
           quakeLevel={quakeLevel}
           filterText={filterText}
         />

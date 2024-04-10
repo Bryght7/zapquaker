@@ -7,6 +7,7 @@ import { ZapQuakeDisplay } from "./ZapQuakeDisplay";
 type Props = {
   zapLevel: number;
   quakeLevel: number;
+  arrowLevel: number;
   spellCapacity: number;
   building: Building;
 };
@@ -15,8 +16,11 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
   const result: ZapQuake[] = [];
   const hp = props.building.hp[buildingLevel - 1];
   const damageZap = DATA_SPELLS[1].damage[props.zapLevel - 1];
+  const damageArrow = DATA_SPELLS[2].damage[props.arrowLevel - 1];
   const damageQuake = DATA_SPELLS[0].damage[props.quakeLevel - 1]; // to be divided by 100
   let nbSpells = 0;
+  let nbSpellsWithArrow = 0;
+
   let hpLeft = hp;
 
   // if building is a hero, can't be damaged by quakes
@@ -24,10 +28,15 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
   if (props.building.id === "62" || props.building.id === "122") {
     const nbZaps = Math.ceil(hp / damageZap);
     return nbZaps <= props.spellCapacity
-      ? [{ nbQuakes: 0, nbZaps: nbZaps }]
+      ? [{ nbQuakes: 0, nbZaps: nbZaps, hasArrow:false }]
       : [];
   }
-
+  // if the building can be oneshotted with the arrow, return just the arrow
+  if(props.arrowLevel !== 0 && hp <= damageArrow){
+    //return [{ nbQuakes: 0, nbZaps: 0, hasArrow:true }]
+    result.push({ nbQuakes: 0, nbZaps: 0, hasArrow:true});
+  }
+  
   for (let q = 0; nbSpells < props.spellCapacity && hpLeft > 0; q++) {
     for (let z = 1; nbSpells < props.spellCapacity && hpLeft > 0; z++) {
       let damage = z * damageZap; // by default zap damage
@@ -47,7 +56,7 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
       hpLeft = hp - damage; // deal damage to building
       if (hpLeft <= 0) {
         // if building is destroyed, we got a zapquake combination
-        result.push({ nbQuakes: q, nbZaps: z });
+        result.push({ nbQuakes: q, nbZaps: z, hasArrow:false});
       }
       nbSpells = q + z; // update nbSpells
     }
@@ -57,6 +66,48 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
     }
     hpLeft = hp; // repair building for next test
   }
+
+
+  if(props.arrowLevel !== 0){
+  // consider 1 arrow
+  hpLeft = (hp - damageArrow);
+
+  for (let q = 0; nbSpellsWithArrow < props.spellCapacity && hpLeft > 0; q++) {
+    for (let z = 1; nbSpellsWithArrow < props.spellCapacity && hpLeft > 0; z++) {
+      let damage = z * damageZap; // by default zap damage
+      if (q > 0) {
+        let quakesMultiplier = 1; // successive quakes multiplier
+        if (q > 1) {
+          let denominator = 3;
+          for (let i = 0; i < q - 1; i++) {
+            // q=2: 1+1/3, q=3: 1+1/3+1/5, q=4: 1+1/3+1/5+1/7 ...
+            quakesMultiplier += 1 / denominator;
+            denominator += 2;
+          }
+        }
+        // add quake damage
+        damage += (((hp) * damageQuake) / 100) * quakesMultiplier;
+      }
+      hpLeft = (hp - damageArrow) - damage; // deal damage to building
+      if (hpLeft <= 0) {
+        // if building is destroyed, we got a zapquake combination
+        result.push({ nbQuakes: q, nbZaps: z, hasArrow:true});
+      }
+      nbSpellsWithArrow = q + z; // update nbSpells
+    }
+    // Reset nbSpells to 0 to continue loop if below max capacity
+    if (q < props.spellCapacity){
+      nbSpellsWithArrow = 0
+    }
+    hpLeft = hp; // repair building for next test
+  }
+
+    // takes into account also the case 0 lightning and 1 quake
+    if( hpLeft - (((hp) * damageQuake) / 100) <= 0){
+      result.push({ nbQuakes: 1, nbZaps: 0, hasArrow:true});
+    }
+  }
+
 
   // sort by amount of spells used
   result.sort((a: ZapQuake, b: ZapQuake) => {
@@ -69,8 +120,6 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
 }
 
 export function BuildingCard(props: Props) {
-  // localStorage key "buildingLevels" exists ? then get the value of the building
-  // otherwise, default to the building max level
   const [buildingLevel, setBuildingLevel] = useState(
     Number(
       localStorage.getItem("buildingLevels") &&
@@ -81,20 +130,16 @@ export function BuildingCard(props: Props) {
   const zapQuakes: ZapQuake[] = getZapQuakes(props, buildingLevel);
 
   useEffect(() => {
-    // parse the build levels object from localstorage
-    // if not found, initialize object
     const buildingLevels = JSON.parse(
       localStorage.getItem("buildingLevels")!
     ) || { [props.building.id]: buildingLevel };
-    // update the level for the building
     buildingLevels[props.building.id] = buildingLevel;
-    // update localstorage
     localStorage.setItem("buildingLevels", JSON.stringify(buildingLevels));
   }, [buildingLevel, props.building.id]);
 
   useEffect(() => {
     setShowMore(false);
-  }, [props.zapLevel, props.quakeLevel, buildingLevel]);
+  }, [props.zapLevel, props.quakeLevel, props.arrowLevel, buildingLevel]);
 
   return (
     <div className="p-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
@@ -113,7 +158,6 @@ export function BuildingCard(props: Props) {
           </span>
         </div>
       ) : (
-        // by default show lowest spell usage combinations
         zapQuakes
           .filter(
             (z) =>
@@ -124,50 +168,46 @@ export function BuildingCard(props: Props) {
             <ZapQuakeDisplay
               key={i}
               zapLevel={props.zapLevel}
+              arrowLevel={props.arrowLevel}
               quakeLevel={props.quakeLevel}
               zapQuake={z}
               spellCapacity={props.spellCapacity}
             />
           ))
       )}
-      {
-        // if not showing more, and there are results, and there is actually more results to show
-        !showMore &&
-          zapQuakes.length > 0 &&
-          zapQuakes.filter(
+      {!showMore &&
+        zapQuakes.length > 0 &&
+        zapQuakes.filter(
+          (z) =>
+            z.nbZaps + z.nbQuakes >
+            zapQuakes[0].nbZaps + zapQuakes[0].nbQuakes
+        ).length > 0 && (
+          <div className="text-center">
+            <button
+              className="text-gray-500 select-none dark:text-gray-300 focus:outline-none"
+              onClick={() => setShowMore(true)}
+            >
+              Show more...
+            </button>
+          </div>
+        )}
+      {showMore &&
+        zapQuakes
+          .filter(
             (z) =>
               z.nbZaps + z.nbQuakes >
               zapQuakes[0].nbZaps + zapQuakes[0].nbQuakes
-          ).length > 0 && (
-            <div className="text-center">
-              <button
-                className="text-gray-500 select-none dark:text-gray-300 focus:outline-none"
-                onClick={() => setShowMore(true)}
-              >
-                Show more...
-              </button>
-            </div>
           )
-      }
-      {
-        // if user wants to show more, render the rest
-        showMore &&
-          zapQuakes
-            .filter(
-              (z) =>
-                z.nbZaps + z.nbQuakes >
-                zapQuakes[0].nbZaps + zapQuakes[0].nbQuakes
-            )
-            .map((z, i) => (
-              <ZapQuakeDisplay
-                key={i}
-                zapLevel={props.zapLevel}
-                quakeLevel={props.quakeLevel}
-                zapQuake={z}
-                spellCapacity={props.spellCapacity}
-              />
-            ))
-      }
+          .map((z, i) => (
+            <ZapQuakeDisplay
+              key={i}
+              zapLevel={props.zapLevel}
+              arrowLevel={props.arrowLevel}
+              quakeLevel={props.quakeLevel}
+              zapQuake={z}
+              spellCapacity={props.spellCapacity}
+            />
+          ))}
     </div>
   );
 }
