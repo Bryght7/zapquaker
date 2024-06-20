@@ -4,6 +4,7 @@ import { BuildingCard } from "./BuildingCard";
 
 type Props = {
   zapLevel: number;
+  arrowLevel: number;
   quakeLevel: number;
   filterText: string;
 };
@@ -20,6 +21,7 @@ export function ResultsSection(props: Props) {
             key={building.id}
             quakeLevel={props.quakeLevel}
             zapLevel={props.zapLevel}
+            arrowLevel={props.arrowLevel}
             spellCapacity={11}
             building={building}
           />

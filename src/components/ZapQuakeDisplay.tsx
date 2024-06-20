@@ -5,6 +5,7 @@ import { SpellDisplay } from "./SpellDisplay";
 
 type Props = {
   zapLevel: number;
+  arrowLevel: number;
   quakeLevel: number;
   zapQuake: ZapQuake;
   spellCapacity: number;
@@ -26,12 +27,22 @@ export function ZapQuakeDisplay(props: Props) {
           size="sm"
         />
       )}
+
       {props.zapQuake.nbQuakes !== 0 && (
         <SpellDisplay
           name="quake"
           maxLevel={DATA_SPELLS[0].damage.length}
           level={props.quakeLevel}
           quantity={props.zapQuake.nbQuakes}
+          size="sm"
+        />
+      )}      
+      { props.zapQuake.hasArrow===true &&(
+        <SpellDisplay
+          name="giantarrow"
+          maxLevel={DATA_SPELLS[2].damage.length}
+          level={props.arrowLevel}
+          quantity={1}
           size="sm"
         />
       )}
