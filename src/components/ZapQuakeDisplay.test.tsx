@@ -22,6 +22,7 @@ it("should display spells", () => {
   let zapQuake: ZapQuake = {
     nbQuakes: 2,
     nbZaps: 8,
+    useGA: false,
   };
 
   act(() => {
@@ -31,6 +32,8 @@ it("should display spells", () => {
         quakeLevel={4}
         zapQuake={zapQuake}
         spellCapacity={11}
+        gaLevel={11}
+        useGA={false}
       />,
       container
     );
@@ -43,6 +46,7 @@ it("should display 1/2 spell if one has 0 quantity", () => {
   let zapQuake: ZapQuake = {
     nbQuakes: 0,
     nbZaps: 8,
+    useGA: false,
   };
 
   act(() => {
@@ -52,6 +56,8 @@ it("should display 1/2 spell if one has 0 quantity", () => {
         quakeLevel={4}
         zapQuake={zapQuake}
         spellCapacity={11}
+        gaLevel={11}
+        useGA={false}
       />,
       container
     );
@@ -64,6 +70,7 @@ it("should display no spell if none has quantity", () => {
   let zapQuake: ZapQuake = {
     nbQuakes: 0,
     nbZaps: 0,
+    useGA: false,
   };
 
   act(() => {
@@ -73,6 +80,8 @@ it("should display no spell if none has quantity", () => {
         quakeLevel={4}
         zapQuake={zapQuake}
         spellCapacity={11}
+        gaLevel={11}
+        useGA={false}
       />,
       container
     );
@@ -85,6 +94,7 @@ it("should display correct spell capacity usage", () => {
   let zapQuake: ZapQuake = {
     nbQuakes: 2,
     nbZaps: 3,
+    useGA: false,
   };
 
   act(() => {
@@ -94,6 +104,8 @@ it("should display correct spell capacity usage", () => {
         quakeLevel={4}
         zapQuake={zapQuake}
         spellCapacity={11}
+        gaLevel={11}
+        useGA={false}
       />,
       container
     );

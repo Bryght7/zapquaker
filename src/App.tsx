@@ -15,6 +15,12 @@ export default function App() {
   const [quakeLevel, setQuakeLevel] = useState(
     Number(localStorage.getItem("quakeLevel")) || 5
   );
+  const [gaLevel, setGALevel] = useState(
+    Number(localStorage.getItem("gaLevel")) || 1
+  );
+  const [useGA, setGAUse] = useState(
+    Boolean(localStorage.getItem("useGA")) || false
+  );
   const [randomPlaceHolder] = useState(
     DATA_BUILDINGS.map((b) => b.name)[
       Math.floor(Math.random() * DATA_BUILDINGS.length)
@@ -53,6 +59,10 @@ export default function App() {
           setZapLevel={setZapLevel}
           quakeLevel={quakeLevel}
           setQuakeLevel={setQuakeLevel}
+          gaLevel={gaLevel}
+          setGALevel={setGALevel}
+          useGA={useGA}
+          setGAUse={setGAUse}
         />
         <FilterBar
           placeholder={randomPlaceHolder}
@@ -62,6 +72,8 @@ export default function App() {
           zapLevel={zapLevel}
           quakeLevel={quakeLevel}
           filterText={filterText}
+          gaLevel={gaLevel}
+          useGA={useGA}
         />
         <Footer></Footer>
       </div>
