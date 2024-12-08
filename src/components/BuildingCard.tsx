@@ -21,7 +21,7 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
 
   // if building is a hero, can't be damaged by quakes
   // directly return nb of zaps if <= spell capacity
-  if (props.building.id === "62" || props.building.id === "122") {
+  if (["62", "122", "63", "140"].includes(props.building.id)) {
     const nbZaps = Math.ceil(hp / damageZap);
     return nbZaps <= props.spellCapacity
       ? [{ nbQuakes: 0, nbZaps: nbZaps }]
@@ -52,8 +52,8 @@ function getZapQuakes(props: Props, buildingLevel: number): ZapQuake[] {
       nbSpells = q + z; // update nbSpells
     }
     // Reset nbSpells to 0 to continue loop if below max capacity
-    if (q < props.spellCapacity){
-      nbSpells = 0
+    if (q < props.spellCapacity) {
+      nbSpells = 0;
     }
     hpLeft = hp; // repair building for next test
   }

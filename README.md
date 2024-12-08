@@ -2,6 +2,7 @@
 <!--
 See the bottom of this document for the declaration of the reference variables
 -->
+
 [![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
@@ -26,12 +27,12 @@ See the bottom of this document for the declaration of the reference variables
   </p>
 </p>
 
-
-> __Repository status:__ The project has reached a stable, usable state but is no longer being actively developed. However, the game data will be kept up-to-date to the best of my ability, as balance patches are released.
+> **Repository status:** The project has reached a stable, usable state but is no longer being actively developed. However, the game data will be kept up-to-date to the best of my ability, as balance patches are released.
 
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
+
 - [Table of Contents](#table-of-contents)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
@@ -61,15 +62,17 @@ See the bottom of this document for the declaration of the reference variables
 
 ### Prerequisites
 
-- Node.js 12.13.0 or higher
-- npm
+- Node.js 14.14.0
+- npm 6.14.8
 
 ### Installation
 
 ### `git clone https://github.com/Bryght7/zapquaker.git`
+
 Clones the repository.
 
 ### `npm install`
+
 Installs npm packages & dependencies for the project.
 
 ## Available Scripts

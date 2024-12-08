@@ -63,7 +63,7 @@ it("should ignore level in src value if building is royal champion", () => {
   expect(img?.src).toMatch(/.*\/img\/122\.webp/);
 });
 
-it("should ignore level in src value if building is warden statue", () => {
+it("should ignore level in src value if building is grand warden", () => {
   act(() => {
     render(
       <BuildingHeader
@@ -75,6 +75,20 @@ it("should ignore level in src value if building is warden statue", () => {
   });
   const img = container.querySelector("img");
   expect(img?.src).toMatch(/.*\/img\/63\.webp/);
+});
+
+it("should ignore level in src value if building is minion prince", () => {
+  act(() => {
+    render(
+      <BuildingHeader
+        building={DATA_BUILDINGS[21]}
+        level={DATA_BUILDINGS[21].hp.length}
+      />,
+      container
+    );
+  });
+  const img = container.querySelector("img");
+  expect(img?.src).toMatch(/.*\/img\/140\.webp/);
 });
 
 it("should have correct alt value", () => {

@@ -12,10 +12,11 @@ export function BuildingHeader(props: Props) {
       <img
         className="h-12 mr-3"
         src={
-          // ignore level if archer queen, warden statue or royal champion
+          // ignore level if archer queen, grand warden, royal champion or minion prince
           props.building.id === "62" ||
           props.building.id === "63" ||
-          props.building.id === "122"
+          props.building.id === "122" ||
+          props.building.id === "140"
             ? `/img/${props.building.id}.webp`
             : `/img/${props.building.id}_${props.level}.webp`
         }
